@@ -2,7 +2,6 @@ Ext.define('Library.store.Books', {
     extend: 'Ext.data.Store',
     model: 'Library.model.Book',
     autoLoad: true,
-    pageSize: 2,
 
     proxy: {
         type: 'rest',

@@ -1,8 +1,8 @@
 Ext.application({
-    models: ["Book"],
-    stores: ["Books"],
-    controllers: [],
-    views: ["book.List"],
+    models: ['Book'],
+    stores: ['Books'],
+    controllers: ['Books'],
+    views: ['book.List', 'book.Add'],
 
     name: 'Library',
 
