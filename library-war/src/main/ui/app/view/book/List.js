@@ -14,6 +14,30 @@ Ext.define("Library.view.book.List", {
 		hideable: false,
 		dataIndex: 'title',
 		text: 'Titre',
+		align: 'left',
+		filterable: true
+	},{
+		xtype: 'gridcolumn',
+		draggable: false,
+		hideable: false,
+		dataIndex: 'author',
+		text: 'Auteur',
+		align: 'left',
+		filterable: true
+	},{
+		xtype: 'gridcolumn',
+		draggable: false,
+		hideable: false,
+		dataIndex: 'genre',
+		text: 'Genre',
+		align: 'left',
+		filterable: true
+	},{
+		xtype: 'gridcolumn',
+		draggable: false,
+		hideable: false,
+		dataIndex: 'year',
+		text: 'Année',
 		align: 'center',
 		filterable: true
 	}],
@@ -23,8 +47,7 @@ Ext.define("Library.view.book.List", {
 		items: [{
 			text: 'Ajouter',
 			tooltip: 'Ajouter un livre',
-			action: 'add',
-			iconCls: 'add'
+			action: 'add'
 		}, '-', {
 			text: 'Supprimer',
 			tooltip: 'Supprimer les livres sélectionnés',

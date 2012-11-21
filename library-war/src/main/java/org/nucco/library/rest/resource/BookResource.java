@@ -1,7 +1,5 @@
 package org.nucco.library.rest.resource;
 
-import java.util.List;
-
 import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -15,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.nucco.library.bean.Book;
 import org.nucco.library.dao.api.BookDao;
+import org.nucco.library.rest.bean.ExtJsWrapper;
 
 @Path("/books")
 @ManagedBean
@@ -22,8 +21,8 @@ public class BookResource {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Book> list() {
-		return bookDao.list();
+	public ExtJsWrapper<Book> list() {
+		return new ExtJsWrapper<Book>(bookDao.list(), null);
 	}
 
 	@POST

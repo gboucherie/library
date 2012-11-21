@@ -8,10 +8,18 @@ Ext.define('Library.store.Books', {
         url: 'rest/books',
         reader: {
             type: 'json',
-            root: 'book'
+            root: 'book',
+            totalProperty: 'count',
+            successProperty: 'success',
+            messageProperty: 'message'
         },
         writer: {
             type: 'json'
+        },
+        listeners: {
+        	exception: function(proxy, response, operation, eOpts) {
+        		alert('toto');
+        	}
         }
     }
 });
