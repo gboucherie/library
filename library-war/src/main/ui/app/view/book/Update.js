@@ -1,12 +1,15 @@
-Ext.define('Library.view.book.Add', {
+Ext.define('Library.view.book.Update', {
 	extend: 'Ext.window.Window',
-	alias: 'widget.bookadd',
-	title: 'Ajouter un livre',
+	alias: 'widget.bookupdate',
+	title: 'Mettre à jour un livre',
 	autoShow: false,
 	modal: true,
 	items: [{
 		xtype: 'form',
 		items: [{
+			xtype: 'hiddenfield',
+			name: 'id'
+		},{
 			xtype: 'textfield',
 			name: 'title',
 			fieldLabel: 'Titre',
@@ -34,7 +37,7 @@ Ext.define('Library.view.book.Add', {
 		}]
 	}],
 	buttons: [{
-		text: 'Ajouter',
+		text: 'Mettre à jour',
 		action: 'add'
 	}, {
 		text: 'Annuler',
