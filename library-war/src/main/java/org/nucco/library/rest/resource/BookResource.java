@@ -28,8 +28,8 @@ public class BookResource {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public Book add(Book book) {
-		return bookDao.add(book);
+	public ExtJsWrapper<Book> add(Book book) {
+		return new ExtJsWrapper<Book>(bookDao.add(book), null);
 	}
 
 	@PUT

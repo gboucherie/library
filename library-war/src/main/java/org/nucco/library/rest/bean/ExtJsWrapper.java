@@ -1,5 +1,6 @@
 package org.nucco.library.rest.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAnyElement;
@@ -17,6 +18,14 @@ public class ExtJsWrapper<T> {
 	public ExtJsWrapper(List<T> data, String message) {
 		this.data = data;
 		this.count = data.size();
+		this.message = message;
+		this.status = true;
+	}
+
+	public ExtJsWrapper(T data, String message) {
+		this.data = new ArrayList<T>();
+		this.data.add(data);
+		this.count = this.data.size();
 		this.message = message;
 		this.status = true;
 	}
