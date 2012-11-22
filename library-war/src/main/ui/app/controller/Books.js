@@ -59,7 +59,7 @@ Ext.define('Library.controller.Books', {
 		var win = button.up('window');
 		var form = win.down('form').getForm();
 		if (form.isValid()) {
-			var values = form.getValues();
+			var values = form.getFieldValues();
 			var book = this.getBooksStore().getById(values.id);
 			book.set('title', values.title);
 			book.set('author', values.author);

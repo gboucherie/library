@@ -7,8 +7,9 @@ Ext.define('Library.view.book.Update', {
 	items: [{
 		xtype: 'form',
 		items: [{
-			xtype: 'hiddenfield',
-			name: 'id'
+			xtype: 'numberfield',
+			name: 'id',
+			hidden: true
 		},{
 			xtype: 'textfield',
 			name: 'title',
