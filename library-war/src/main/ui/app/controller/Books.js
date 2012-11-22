@@ -48,8 +48,14 @@ Ext.define('Library.controller.Books', {
 		var win = button.up('window');
 		var form = win.down('form').getForm();
 		if (form.isValid()) {
-			var values = form.getValues();
-			this.getBooksStore().add(values);
+			var values = form.getFieldValues();
+			var book = Ext.create('Library.model.Book', {
+				'title': values.title,
+				'author': values.author,
+				'genre': values.genre,
+				'year': values.year
+			});
+			this.getBooksStore().add(book);
 			win.close();
 			this.getBooksStore().sync();
 		}

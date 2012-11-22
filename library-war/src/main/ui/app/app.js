@@ -1,3 +1,4 @@
+Ext.require('Library.form.Book');
 Ext.application({
     models: ['Book'],
     stores: ['Books'],
