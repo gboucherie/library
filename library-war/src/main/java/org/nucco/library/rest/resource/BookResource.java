@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.nucco.library.bean.Book;
 import org.nucco.library.dao.api.BookDao;
-import org.nucco.library.rest.bean.ExtJsWrapper;
+import org.nucco.library.rest.bean.ExtJsResponseWrapper;
 
 @Path("/books")
 @ManagedBean
@@ -21,15 +21,15 @@ public class BookResource {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public ExtJsWrapper<Book> list() {
-		return new ExtJsWrapper<Book>(bookDao.list(), null);
+	public ExtJsResponseWrapper<Book> list() {
+		return new ExtJsResponseWrapper<Book>(bookDao.list(), null);
 	}
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public ExtJsWrapper<Book> add(Book book) {
-		return new ExtJsWrapper<Book>(bookDao.add(book), null);
+	public ExtJsResponseWrapper<Book> add(Book book) {
+		return new ExtJsResponseWrapper<Book>(bookDao.add(book), null);
 	}
 
 	@PUT

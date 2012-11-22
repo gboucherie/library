@@ -11,18 +11,18 @@ import org.nucco.library.bean.Book;
 
 @XmlRootElement(name = "")
 @XmlSeeAlso(Book.class)
-public class ExtJsWrapper<T> {
+public class ExtJsResponseWrapper<T> {
 
-	public ExtJsWrapper() {}
+	public ExtJsResponseWrapper() {}
 
-	public ExtJsWrapper(List<T> data, String message) {
+	public ExtJsResponseWrapper(List<T> data, String message) {
 		this.data = data;
 		this.count = data.size();
 		this.message = message;
 		this.status = true;
 	}
 
-	public ExtJsWrapper(T data, String message) {
+	public ExtJsResponseWrapper(T data, String message) {
 		this.data = new ArrayList<T>();
 		this.data.add(data);
 		this.count = this.data.size();
