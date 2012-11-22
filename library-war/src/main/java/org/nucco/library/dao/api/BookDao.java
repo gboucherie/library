@@ -12,7 +12,14 @@ public interface BookDao {
 	 * 
 	 * @return a list of books
 	 */
-	List<Book> list();
+	List<Book> list(int start, int limit);
+
+	/**
+	 * Return the number of books stock in database.
+	 * 
+	 * @return the number of books
+	 */
+	long count();
 
 	/**
 	 * Add a new book in the database and return the instance

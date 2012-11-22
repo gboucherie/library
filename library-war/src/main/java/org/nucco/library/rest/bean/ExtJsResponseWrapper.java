@@ -15,26 +15,11 @@ public class ExtJsResponseWrapper<T> {
 
 	public ExtJsResponseWrapper() {}
 
-	public ExtJsResponseWrapper(List<T> data, String message) {
-		this.data = data;
-		this.count = data.size();
-		this.message = message;
-		this.status = true;
-	}
-
-	public ExtJsResponseWrapper(T data, String message) {
-		this.data = new ArrayList<T>();
-		this.data.add(data);
-		this.count = this.data.size();
-		this.message = message;
-		this.status = true;
-	}
-
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
 
@@ -63,7 +48,12 @@ public class ExtJsResponseWrapper<T> {
 		this.data = data;
 	}
 
-	private int count;
+	public void setData(T data) {
+		this.data = new ArrayList<T>();
+		this.data.add(data);
+	}
+
+	private long count;
 	private boolean status;
 	private String message;
 	private List<T> data;

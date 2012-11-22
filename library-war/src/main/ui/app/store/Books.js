@@ -2,7 +2,9 @@ Ext.define('Library.store.Books', {
     extend: 'Ext.data.Store',
     model: 'Library.model.Book',
     autoLoad: true,
-
+    buffered: true,
+    pageSize: 100,
+    leadingBufferZone: 300,
     proxy: {
         type: 'rest',
         url: 'rest/books',

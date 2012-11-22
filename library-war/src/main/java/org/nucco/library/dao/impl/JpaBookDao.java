@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.nucco.library.bean.Book;
 import org.nucco.library.dao.api.BookDao;
@@ -18,13 +17,21 @@ import org.nucco.library.dao.api.BookDao;
 public class JpaBookDao implements BookDao {
 
 	@Override
-	public List<Book> list() {
+	public List<Book> list(int start, int limit) {
 		CriteriaBuilder builder = this.em.getCriteriaBuilder();
 		CriteriaQuery<Book> criteria = builder.createQuery(Book.class);
-		Root<Book> books = criteria.from(Book.class);
-		criteria.select(books);
+		criteria.select(criteria.from(Book.class));
 
-		return this.em.createQuery(criteria).getResultList();
+		return this.em.createQuery(criteria).setFirstResult(start).setMaxResults(limit).getResultList();
+	}
+
+	@Override
+	public long count() {
+		CriteriaBuilder builder = this.em.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+		criteria.select(builder.count(criteria.from(Book.class)));
+
+		return this.em.createQuery(criteria).getSingleResult();
 	}
 
 	@Override
