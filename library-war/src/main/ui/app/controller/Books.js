@@ -5,12 +5,16 @@ Ext.define('Library.controller.Books', {
 	refs: [{
 		selector: 'booklist',
 		ref: 'grid'
+	},{
+		selector: 'booklist button[action=delete]',
+		ref: 'deleteBooksButton'
 	}],
 
 	init: function() {
 		this.control({
 			'booklist': {
-				itemdblclick: this.openUpdateBookWindow
+				itemdblclick: this.openUpdateBookWindow,
+				selectionchange: this.toggleDeleteBooksButton
 			},
 			'booklist button[action=add]': {
 				click: this.openAddBookWindow
@@ -31,6 +35,10 @@ Ext.define('Library.controller.Books', {
 				click: this.cancelUpdateBook
 			}
 		});
+	},
+
+	toggleDeleteBooksButton: function(sm, selections) {
+		this.getDeleteBooksButton().setDisabled(selections.length == 0);
 	},
 
 	openUpdateBookWindow: function(grid, record, item, index, e, eOpts) {

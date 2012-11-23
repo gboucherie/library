@@ -51,7 +51,8 @@ Ext.define("Library.view.book.List", {
 		}, '-', {
 			text: 'Supprimer',
 			tooltip: 'Supprimer les livres sélectionnés',
-			action: 'delete'
+			action: 'delete',
+			disabled: true
 		}]
 	}]
 });
