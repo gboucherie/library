@@ -1,22 +1,35 @@
 package org.nucco.library.service.impl.bean;
 
-import java.util.List;
+import java.util.Calendar;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlRootElement(name = "ISBNdb")
-@XmlSeeAlso({BookData.class})
+@XmlSeeAlso(BookList.class)
 public class ISBNdb {
 
-	public List<BookData> getBooks() {
-		return books;
+	public Calendar getServerTime() {
+		return serverTime;
 	}
 
-	public void setBooks(List<BookData> books) {
-		this.books = books;
+	@XmlAttribute(name = "server_time")
+	public void setServerTime(Calendar serverTime) {
+		this.serverTime = serverTime;
 	}
 
-	private List<BookData> books;
+	public BookList getBookList() {
+		return bookList;
+	}
+
+	@XmlElement(name = "BookList")
+	public void setBookList(BookList bookList) {
+		this.bookList = bookList;
+	}
+
+	private Calendar serverTime;
+	private BookList bookList;
 
 }

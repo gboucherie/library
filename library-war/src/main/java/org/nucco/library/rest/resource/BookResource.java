@@ -68,8 +68,7 @@ public class BookResource {
 	@Path("/isbn/{isbn}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Book getFromIsbn(@PathParam("isbn") String isbn) {
-		isbnService.getBook(isbn);
-		return null;
+		return isbnService.getBook(isbn);
 	}
 
 	@Inject
