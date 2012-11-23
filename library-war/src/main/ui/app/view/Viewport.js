@@ -8,10 +8,20 @@ Ext.define('Library.view.Viewport', {
     ],
 
     layout: {
-        type: 'fit'
+        type: 'border',
+        padding: 10
     },
 
     items: [{
+    	region: 'north',
+    	xtype: 'container',
+    	height: 50
+    },{
+    	region: 'center',
         xtype: 'booklist'
+    },{
+    	region: 'south',
+    	xtype: 'container',
+    	height: 30
     }]
 });
