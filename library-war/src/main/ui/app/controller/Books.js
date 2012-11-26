@@ -1,7 +1,7 @@
 Ext.define('Library.controller.Books', {
 	extend: 'Ext.app.Controller',
 	stores: ['Books'],
-	views: ['book.Add', 'book.Update'],
+	views: ['book.List', 'book.Add', 'book.Update'],
 	refs: [{
 		selector: 'booklist',
 		ref: 'grid'

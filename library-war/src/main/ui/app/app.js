@@ -3,9 +3,12 @@ Ext.application({
     models: ['Book'],
     stores: ['Books'],
     controllers: ['Books'],
-    views: ['book.List', 'book.Add', 'book.Update'],
-
     name: 'Library',
-
-    autoCreateViewport: true
+    roles: [],
+    hasRole: function(role) {
+    	return Ext.Array.contains(this.roles, role);
+    },
+    launch: function() {
+    	App.app = this;
+    }
 });

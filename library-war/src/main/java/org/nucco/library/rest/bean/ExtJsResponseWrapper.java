@@ -8,9 +8,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.nucco.library.bean.Book;
+import org.nucco.library.bean.User;
 
 @XmlRootElement(name = "")
-@XmlSeeAlso(Book.class)
+@XmlSeeAlso({Book.class, User.class})
 public class ExtJsResponseWrapper<T> {
 
 	public ExtJsResponseWrapper() {}
