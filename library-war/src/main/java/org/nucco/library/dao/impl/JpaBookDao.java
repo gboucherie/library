@@ -2,6 +2,7 @@ package org.nucco.library.dao.impl;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -17,6 +18,7 @@ import org.nucco.library.dao.api.BookDao;
 public class JpaBookDao implements BookDao {
 
 	@Override
+	@RolesAllowed({"USER", "ADMIN"})
 	public List<Book> list(int start, int limit) {
 		CriteriaBuilder builder = this.em.getCriteriaBuilder();
 		CriteriaQuery<Book> criteria = builder.createQuery(Book.class);
