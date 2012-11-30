@@ -15,6 +15,11 @@ public class JpaUserDao implements UserDao {
 		return em.find(User.class, email);
 	}
 
+	@Override
+	public void add(User user) {
+		em.merge(user);
+	}
+
 	@PersistenceContext
 	private EntityManager em;
 

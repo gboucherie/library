@@ -12,4 +12,11 @@ public interface UserDao {
 	 */
 	User find(String email);
 
+	/**
+	 * Add a new user.
+	 * 
+	 * @param user the new user to add
+	 */
+	void add(User user);
+
 }
