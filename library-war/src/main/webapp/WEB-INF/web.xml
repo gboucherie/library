@@ -9,4 +9,13 @@
 		<servlet-name>javax.ws.rs.core.Application</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+	<login-config>
+		<realm-name>libraryJdbcRealm</realm-name>
+	</login-config>
+	<security-role>
+		<role-name>USER</role-name>
+	</security-role>
+	<security-role>
+		<role-name>ADMIN</role-name>
+	</security-role>
 </web-app>
