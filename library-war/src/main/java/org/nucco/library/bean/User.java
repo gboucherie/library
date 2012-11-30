@@ -6,19 +6,23 @@ import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
+@Table(name = "USERS")
+@XmlRootElement
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
 	@Column(nullable = false, unique = true, length = 128)
 	private String email;
 
@@ -40,22 +44,16 @@ public class User {
 	@Column(nullable = false)
 	private Date registeredOn;
 
-	@ElementCollection
-	@CollectionTable
-	@Enumerated
+	@ElementCollection(targetClass = Group.class)
+	@CollectionTable(name = "USERS_GROUPS",
+					joinColumns = @JoinColumn(name = "email", nullable = false),
+					uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "groupname"})})
+	@Enumerated(EnumType.STRING)
 	@Column(name = "groupname", nullable = false, length = 64)
 	private List<Group> groups;
 
 	@Column(nullable = false)
 	private Boolean activated;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getEmail() {
 		return email;
@@ -103,6 +101,14 @@ public class User {
 
 	public void setGroups(List<Group> groups) {
 		this.groups = groups;
+	}
+
+	public Boolean getActivated() {
+		return activated;
+	}
+
+	public void setActivated(Boolean activated) {
+		this.activated = activated;
 	}
 
 }
