@@ -1,7 +1,7 @@
 Ext.define('Library.store.Books', {
     extend: 'Ext.data.Store',
     model: 'Library.model.Book',
-    autoLoad: true,
+    autoLoad: false,
     buffered: true,
     pageSize: 100,
     leadingBufferZone: 300,

@@ -1,5 +1,6 @@
 package org.nucco.library.rest.resource;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,9 @@ import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -33,17 +36,21 @@ public class UserManagementResource {
 	public Response currentUser(@Context HttpServletRequest request) {
 		ExtJsResponseWrapper<User> response = new ExtJsResponseWrapper<User>();
 
-		response.setData(userDao.find(request.getUserPrincipal().getName()));
+		Principal principal = request.getUserPrincipal();
+		if (principal != null) {
+			response.setData(userDao.find(principal.getName()));
+			response.setStatus(true);
+		} else {
+			response.setStatus(false);
+		}
 
 		return Response.ok().entity(response).build();
 	}
 
-	@GET
+	@POST
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(@Context HttpServletRequest request) {
-		String email = "test";
-		String password = "test";
+	public Response login(@FormParam("login") String email, @FormParam("password") String password, @Context HttpServletRequest request) {
 		ExtJsResponseWrapper<User> response = new ExtJsResponseWrapper<User>();
 
 		// only login if not already logged in...
@@ -76,12 +83,13 @@ public class UserManagementResource {
 	public Response register() {
 		List<Group> groups = new ArrayList<Group>();
 		groups.add(Group.USER);
+		groups.add(Group.ADMIN);
 
 		User newUser = new User();
-		newUser.setEmail("test");
-		newUser.setPassword(DigestUtils.sha512Hex("test"));
-		newUser.setFirstName("test");
-		newUser.setLastName("test");
+		newUser.setEmail("test2");
+		newUser.setPassword(DigestUtils.sha512Hex("test2"));
+		newUser.setFirstName("test2");
+		newUser.setLastName("test2");
 		newUser.setRegisteredOn(new Date());
 		newUser.setActivated(true);
 		newUser.setGroups(groups);

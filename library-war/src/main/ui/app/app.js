@@ -1,18 +1,12 @@
+Ext.require('Library.utils');
 Ext.require('Library.form.Book');
+Ext.require('Library.form.Login');
 Ext.application({
 	name: 'Library',
-    models: ['Book'],
+	id: 'library',
+    models: ['Book', 'User'],
     stores: ['Books'],
-    controllers: ['Books'],
+    controllers: ['Books', 'Users'],
     views: ['Viewport'],
-    roles: [],
-    hasRole: function(role) {
-    	return Ext.Array.contains(this.roles, role);
-    },
-    launch: function() {
-    	// TODO: should work but version 4.1.1a have a bug on views getters creation
-    	// (see comments on Ext.app.Application), should be fixed on next version
-//    	this.getView('Viewport').create();
-    	Ext.create('Library.view.Viewport');
-    }
+    autoCreateViewport: true
 });
