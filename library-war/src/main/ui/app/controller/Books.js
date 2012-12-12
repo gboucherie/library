@@ -14,7 +14,8 @@ Ext.define('Library.controller.Books', {
 		this.control({
 			'booklist': {
 				itemdblclick: this.openUpdateBookWindow,
-				selectionchange: this.toggleDeleteBooksButton
+				selectionchange: this.toggleDeleteBooksButton,
+				beforeshow: this.loadBooks
 			},
 			'booklist button[action=add]': {
 				click: this.openAddBookWindow
@@ -35,6 +36,10 @@ Ext.define('Library.controller.Books', {
 				click: this.cancelUpdateBook
 			}
 		});
+	},
+
+	loadBooks: function() {
+		this.getBooksStore().load();
 	},
 
 	toggleDeleteBooksButton: function(sm, selections) {
