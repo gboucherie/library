@@ -18,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.nucco.library.bean.Group;
 import org.nucco.library.bean.User;
@@ -50,13 +51,17 @@ public class UserManagementResource {
 	@POST
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(@FormParam("login") String email, @FormParam("password") String password, @Context HttpServletRequest request) {
+	public Response login(@FormParam("credentials") String credentials, @Context HttpServletRequest request) {
 		ExtJsResponseWrapper<User> response = new ExtJsResponseWrapper<User>();
+
+		String[] tmp = (new String(Base64.decodeBase64(credentials))).split(":");
+		String login = tmp[0];
+		String password = tmp[1];
 
 		// only login if not already logged in...
 		if (request.getUserPrincipal() == null) {
 			try {
-				request.login(email, password);
+				request.login(login, password);
 			} catch (ServletException e) {
 				LOG.warn(e.getMessage(), e);
 				response.setStatus(false);
@@ -64,10 +69,10 @@ public class UserManagementResource {
 				return Response.ok().entity(response).build();
 			}
 		} else {
-			LOG.info("Skip login because already logged in: {}", email);
+			LOG.info("Skip login because already logged in: {}", login);
 		}
 
-		User user = userDao.find(email);
+		User user = userDao.find(login);
 		user.setPassword(null);
 
 		response.setStatus(true);

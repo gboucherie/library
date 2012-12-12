@@ -39,8 +39,7 @@ Ext.define('Library.controller.Users', {
 				url: Library.utils.rest.security.login,
 				method: 'POST',
 				params: {
-					login: login,
-					password: password
+					credentials: Library.utils.base64.encode(login + ":" + password)
 				},
 				scope: this,
 				success: function(response) {
