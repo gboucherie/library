@@ -8,11 +8,11 @@ Ext.define('Library.utils', {
 	},
 	security: {
 		user: null,
-	    hasRole: function(role) {
-	    	return Ext.Array.contains(Library.utils.security.user.roles, role);
-	    },
-	    getCurrentUser: function() {
-	    	Ext.Ajax.request({
+		hasRole: function(role) {
+			return Ext.Array.contains(Library.utils.security.user.roles, role);
+		},
+		getCurrentUser: function() {
+			Ext.Ajax.request({
 				url: Library.utils.rest.security.current_user,
 				method: 'GET',
 				async: false,
@@ -24,7 +24,7 @@ Ext.define('Library.utils', {
 					}
 				}
 			});
-	    }
+		}
 	},
 	base64: {
 		// private property

@@ -4,9 +4,9 @@ Ext.require('Library.form.Login');
 Ext.application({
 	name: 'Library',
 	id: 'library',
-    models: ['Book', 'User'],
-    stores: ['Books'],
-    controllers: ['Books', 'Users'],
-    views: ['Viewport'],
-    autoCreateViewport: true
+	models: ['Book', 'User'],
+	stores: ['Books'],
+	controllers: ['Books', 'Users'],
+	views: ['Viewport'],
+	autoCreateViewport: true
 });
