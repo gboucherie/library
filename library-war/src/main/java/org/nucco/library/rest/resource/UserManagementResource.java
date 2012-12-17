@@ -23,7 +23,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.nucco.library.bean.Group;
 import org.nucco.library.bean.User;
 import org.nucco.library.dao.api.UserDao;
-import org.nucco.library.rest.bean.ExtJsResponseWrapper;
+import org.nucco.library.rest.bean.ResponseWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +35,7 @@ public class UserManagementResource {
 	@Path("/current_user")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response currentUser(@Context HttpServletRequest request) {
-		ExtJsResponseWrapper<User> response = new ExtJsResponseWrapper<User>();
+		ResponseWrapper<User> response = new ResponseWrapper<User>();
 
 		Principal principal = request.getUserPrincipal();
 		if (principal != null) {
@@ -52,7 +52,7 @@ public class UserManagementResource {
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response login(@FormParam("credentials") String credentials, @Context HttpServletRequest request) {
-		ExtJsResponseWrapper<User> response = new ExtJsResponseWrapper<User>();
+		ResponseWrapper<User> response = new ResponseWrapper<User>();
 
 		String[] tmp = (new String(Base64.decodeBase64(credentials))).split(":");
 		String login = tmp[0];

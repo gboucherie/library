@@ -12,9 +12,9 @@ import org.nucco.library.bean.User;
 
 @XmlRootElement(name = "")
 @XmlSeeAlso({Book.class, User.class})
-public class ExtJsResponseWrapper<T> {
+public class ResponseWrapper<T> {
 
-	public ExtJsResponseWrapper() {}
+	public ResponseWrapper() {}
 
 	public long getCount() {
 		return count;

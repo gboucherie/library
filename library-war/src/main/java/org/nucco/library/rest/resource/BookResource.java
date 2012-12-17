@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.nucco.library.bean.Book;
 import org.nucco.library.dao.api.BookDao;
-import org.nucco.library.rest.bean.ExtJsResponseWrapper;
+import org.nucco.library.rest.bean.ResponseWrapper;
 import org.nucco.library.service.api.ISBNService;
 
 @Path("/books")
@@ -26,10 +26,10 @@ public class BookResource {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public ExtJsResponseWrapper<Book> list(@QueryParam("start") int start, @QueryParam("limit") int limit) {
+	public ResponseWrapper<Book> list(@QueryParam("start") int start, @QueryParam("limit") int limit) {
 		List<Book> books = bookDao.list(start, limit);
 		long count = bookDao.count();
-		ExtJsResponseWrapper<Book> response = new ExtJsResponseWrapper<Book>();
+		ResponseWrapper<Book> response = new ResponseWrapper<Book>();
 
 		response.setData(books);
 		response.setCount(count);
@@ -41,8 +41,8 @@ public class BookResource {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
-	public ExtJsResponseWrapper<Book> add(Book book) {
-		ExtJsResponseWrapper<Book> response = new ExtJsResponseWrapper<Book>();
+	public ResponseWrapper<Book> add(Book book) {
+		ResponseWrapper<Book> response = new ResponseWrapper<Book>();
 		response.setCount(1);
 		response.setData(bookDao.add(book));
 		response.setStatus(true);
