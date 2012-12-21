@@ -5,6 +5,7 @@
 		<properties>
 			<property name="eclipselink.deploy-on-startup" value="true" />
 			<property name="eclipselink.logging.level" value="${sql.logging.level}" />
+			<property name="eclipselink.logging.parameters" value="true" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode" value="database" />
 		</properties>

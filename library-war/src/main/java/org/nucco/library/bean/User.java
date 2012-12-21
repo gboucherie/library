@@ -25,37 +25,6 @@ public class User {
 
 	@Id
 	@Column(nullable = false, unique = true, length = 128)
-	private String email;
-
-	@Column(nullable = false, length = 128)
-	private String firstName;
-
-	@Column(nullable = false, length = 128)
-	private String lastName;
-
-	/**
-     * A sha512 is 512 bits long -- as its name indicates. If you are using an hexadecimal representation, 
-     * each digit codes for 4 bits ; so you need 512 : 4 = 128 digits to represent 512 bits -- so, you need a varchar(128), 
-     * or a char(128), as the length is always the same, not varying at all.
-     */
-	@Column(nullable = false, length = 128)
-	private String password;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
-	private Date registeredOn;
-
-	@ElementCollection(targetClass = Group.class)
-	@CollectionTable(name = "USERS_GROUPS",
-					joinColumns = @JoinColumn(name = "email", nullable = false),
-					uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "groupname"})})
-	@Enumerated(EnumType.STRING)
-	@Column(name = "groupname", nullable = false, length = 64)
-	private List<Group> groups;
-
-	@Column(nullable = false)
-	private Boolean activated;
-
 	public String getEmail() {
 		return email;
 	}
@@ -64,6 +33,7 @@ public class User {
 		this.email = email;
 	}
 
+	@Column(nullable = false, length = 128)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -72,6 +42,7 @@ public class User {
 		this.firstName = firstName;
 	}
 
+	@Column(nullable = false, length = 128)
 	public String getLastName() {
 		return lastName;
 	}
@@ -80,6 +51,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
+	/**
+     * A sha512 is 512 bits long -- as its name indicates. If you are using an hexadecimal representation, 
+     * each digit codes for 4 bits ; so you need 512 : 4 = 128 digits to represent 512 bits -- so, you need a varchar(128), 
+     * or a char(128), as the length is always the same, not varying at all.
+     */
+	@Column(nullable = false, length = 128)
 	public String getPassword() {
 		return password;
 	}
@@ -88,6 +65,8 @@ public class User {
 		this.password = password;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	public Date getRegisteredOn() {
 		return registeredOn;
 	}
@@ -96,6 +75,12 @@ public class User {
 		this.registeredOn = registeredOn;
 	}
 
+	@ElementCollection(targetClass = Group.class)
+	@CollectionTable(name = "USERS_GROUPS",
+					joinColumns = @JoinColumn(name = "email", nullable = false),
+					uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "groupname"})})
+	@Enumerated(EnumType.STRING)
+	@Column(name = "groupname", nullable = false, length = 64)
 	public List<Group> getGroups() {
 		return groups;
 	}
@@ -105,6 +90,7 @@ public class User {
 		this.groups = groups;
 	}
 
+	@Column(nullable = false)
 	public Boolean getActivated() {
 		return activated;
 	}
@@ -112,5 +98,19 @@ public class User {
 	public void setActivated(Boolean activated) {
 		this.activated = activated;
 	}
+
+	private String email;
+
+	private String firstName;
+
+	private String lastName;
+
+	private String password;
+
+	private Date registeredOn;
+
+	private List<Group> groups;
+
+	private Boolean activated;
 
 }

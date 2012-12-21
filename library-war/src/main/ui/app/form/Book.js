@@ -11,10 +11,12 @@ Ext.define('Library.form.Book', {
 		fieldLabel: 'Titre',
 		allowBlank: false
 	},{
-		xtype: 'textfield',
+		xtype: 'combobox',
 		name: 'author',
 		fieldLabel: 'Auteur',
-		allowBlank: false
+		displayField: 'fullname',
+		allowBlank: false,
+		store: 'Authors'
 	},{
 		xtype: 'textfield',
 		name: 'genre',

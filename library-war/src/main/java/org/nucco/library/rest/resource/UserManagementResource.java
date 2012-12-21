@@ -17,6 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -66,7 +67,7 @@ public class UserManagementResource {
 				LOG.warn(e.getMessage(), e);
 				response.setStatus(false);
 				response.setMessage("Authentication failed !");
-				return Response.ok().entity(response).build();
+				return Response.status(Status.UNAUTHORIZED).entity(response).build();
 			}
 		} else {
 			LOG.info("Skip login because already logged in: {}", login);

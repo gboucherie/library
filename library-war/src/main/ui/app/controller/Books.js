@@ -1,6 +1,6 @@
 Ext.define('Library.controller.Books', {
 	extend: 'Ext.app.Controller',
-	stores: ['Books'],
+	stores: ['Books', 'Authors'],
 	views: ['book.List', 'book.Add', 'book.Update'],
 	refs: [{
 		selector: 'booklist',
@@ -15,7 +15,7 @@ Ext.define('Library.controller.Books', {
 			'booklist': {
 				itemdblclick: this.openUpdateBookWindow,
 				selectionchange: this.toggleDeleteBooksButton,
-				beforeshow: this.loadBooks
+				beforeactivate: this.loadBooks
 			},
 			'booklist button[action=add]': {
 				click: this.openAddBookWindow

@@ -18,7 +18,7 @@ import org.nucco.library.dao.api.BookDao;
 public class JpaBookDao implements BookDao {
 
 	@Override
-	@RolesAllowed({"USER", "ADMIN"})
+	@RolesAllowed({"USER"})
 	public List<Book> list(int start, int limit) {
 		CriteriaBuilder builder = this.em.getCriteriaBuilder();
 		CriteriaQuery<Book> criteria = builder.createQuery(Book.class);
@@ -52,6 +52,11 @@ public class JpaBookDao implements BookDao {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remove(Book book) {
 		this.em.remove(this.em.merge(book));
+	}
+
+	@Override
+	public Book get(Long id) {
+		return this.em.find(Book.class, id);
 	}
 
 	@PersistenceContext

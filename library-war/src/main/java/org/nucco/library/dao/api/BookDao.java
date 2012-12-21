@@ -47,4 +47,12 @@ public interface BookDao {
 	 */
 	void remove(Book book);
 
+	/**
+	 * Retrieve the book corresponding to id.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Book get(Long id);
+
 }

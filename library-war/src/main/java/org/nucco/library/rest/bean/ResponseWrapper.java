@@ -7,11 +7,11 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import org.nucco.library.bean.Book;
+import org.nucco.library.bean.Author;
 import org.nucco.library.bean.User;
 
 @XmlRootElement(name = "")
-@XmlSeeAlso({Book.class, User.class})
+@XmlSeeAlso({BookDTO.class, Author.class, User.class})
 public class ResponseWrapper<T> {
 
 	public ResponseWrapper() {}

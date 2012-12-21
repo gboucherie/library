@@ -1,17 +1,10 @@
-package org.nucco.library.bean;
+package org.nucco.library.rest.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-public class Book {
+@XmlRootElement(name = "book")
+public class BookDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -20,7 +13,6 @@ public class Book {
 		this.id = id;
 	}
 
-	@Column(length = 100, nullable = false)
 	public String getTitle() {
 		return title;
 	}
@@ -29,16 +21,14 @@ public class Book {
 		this.title = title;
 	}
 
-	@ManyToOne(optional = false)
-	public Author getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Author author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	@Column(length = 50, nullable = false)
 	public String getGenre() {
 		return genre;
 	}
@@ -47,7 +37,6 @@ public class Book {
 		this.genre = genre;
 	}
 
-	@Column(nullable = false)
 	public Integer getYear() {
 		return year;
 	}
@@ -58,7 +47,7 @@ public class Book {
 
 	private Long id;
 	private String title;
-	private Author author;
+	private String author;
 	private String genre;
 	private Integer year;
 

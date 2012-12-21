@@ -36,7 +36,7 @@ public class ISBNdbService implements ISBNService {
 
 			book = new Book();
 			book.setTitle(bookData.getTitle());
-			book.setAuthor(bookData.getAuthorsText());
+//			book.setAuthor(bookData.getAuthorsText());
 
 		} catch (JAXBException e) {
 			LOG.error(e.getMessage(), e);
