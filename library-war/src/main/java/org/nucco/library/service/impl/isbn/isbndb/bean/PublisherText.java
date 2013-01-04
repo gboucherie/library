@@ -1,19 +1,19 @@
-package org.nucco.library.service.impl.bean;
+package org.nucco.library.service.impl.isbn.isbndb.bean;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlValue;
 
-@XmlRootElement(name = "Person")
-public class Person {
+@XmlRootElement(name = "PublisherText")
+public class PublisherText {
 
-	public String getPersonId() {
-		return personId;
+	public String getPublisherId() {
+		return publisherId;
 	}
 
-	@XmlAttribute(name = "person_id")
-	public void setPersonId(String personId) {
-		this.personId = personId;
+	@XmlAttribute(name = "publisher_id")
+	public void setPublisherId(String publisherId) {
+		this.publisherId = publisherId;
 	}
 
 	public String getDescription() {
@@ -25,7 +25,7 @@ public class Person {
 		this.description = description;
 	}
 
-	private String personId;
+	private String publisherId;
 	private String description;
 
 }

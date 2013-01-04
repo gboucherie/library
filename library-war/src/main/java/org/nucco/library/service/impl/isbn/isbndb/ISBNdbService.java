@@ -1,4 +1,4 @@
-package org.nucco.library.service.impl;
+package org.nucco.library.service.impl.isbn.isbndb;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,8 +13,8 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.nucco.library.bean.Book;
 import org.nucco.library.service.api.ISBNService;
-import org.nucco.library.service.impl.bean.BookData;
-import org.nucco.library.service.impl.bean.ISBNdb;
+import org.nucco.library.service.impl.isbn.isbndb.bean.BookData;
+import org.nucco.library.service.impl.isbn.isbndb.bean.ISBNdb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

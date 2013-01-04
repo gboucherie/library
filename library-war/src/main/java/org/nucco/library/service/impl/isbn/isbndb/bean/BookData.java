@@ -1,4 +1,4 @@
-package org.nucco.library.service.impl.bean;
+package org.nucco.library.service.impl.isbn.isbndb.bean;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;

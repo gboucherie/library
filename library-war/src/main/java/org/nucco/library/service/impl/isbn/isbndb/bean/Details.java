@@ -1,4 +1,4 @@
-package org.nucco.library.service.impl.bean;
+package org.nucco.library.service.impl.isbn.isbndb.bean;
 
 import java.util.Calendar;
 
