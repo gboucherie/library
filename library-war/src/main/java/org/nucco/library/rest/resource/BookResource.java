@@ -1,8 +1,11 @@
 package org.nucco.library.rest.resource;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.annotation.ManagedBean;
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
@@ -15,6 +18,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.nucco.library.bean.Author;
 import org.nucco.library.bean.Book;
@@ -28,6 +33,20 @@ import org.nucco.library.service.api.ISBNService;
 @Path("/books")
 @ManagedBean
 public class BookResource {
+
+	// TODO: provide a better solution to order isbn services
+	@Inject
+	public void initIsbnServices(@Any Instance<ISBNService> isbnServices) {
+		this.isbnServices = new TreeMap<Integer, ISBNService>();
+
+		for (ISBNService isbnService : isbnServices) {
+			if (isbnService.getName().equals("google")) {
+				this.isbnServices.put(0, isbnService);
+			} else if (isbnService.getName().equals("isbndb")) {
+				this.isbnServices.put(1, isbnService);
+			}
+		}
+	}
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
@@ -85,8 +104,29 @@ public class BookResource {
 	@GET
 	@Path("/isbn/{isbn}")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Book getFromIsbn(@PathParam("isbn") String isbn) {
-		return isbnService.getBook(isbn);
+	public Response getFromIsbn(@PathParam("isbn") String isbn) {
+		BookDTO book = null;
+
+		for (ISBNService isbnService : this.isbnServices.values()) {
+			book = isbnService.getBook(isbn);
+			if (book != null) {
+				break;
+			}
+		}
+
+		Response response = null;
+
+		if (book == null) {
+			response = Response.status(Status.NOT_FOUND).build();
+		} else {
+			ResponseWrapper<BookDTO> responseWrapper = new ResponseWrapper<BookDTO>();
+			responseWrapper.setStatus(true);
+			responseWrapper.setCount(1);
+			responseWrapper.setData(book);
+			response = Response.ok().entity(responseWrapper).build();
+		}
+
+		return response;
 	}
 
 	@Inject
@@ -105,14 +145,9 @@ public class BookResource {
 		this.dtoService = dtoService;
 	}
 
-	@Inject
-	public void setIsbnService(ISBNService isbnService) {
-		this.isbnService = isbnService;
-	}
-
 	private BookDao bookDao;
 	private AuthorDao authorDao;
 	private DTOService dtoService;
-	private ISBNService isbnService;
+	private TreeMap<Integer, ISBNService> isbnServices;
 
 }

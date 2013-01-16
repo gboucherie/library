@@ -11,20 +11,26 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
-import org.nucco.library.bean.Book;
+import org.nucco.library.rest.bean.BookDTO;
 import org.nucco.library.service.api.ISBNService;
 import org.nucco.library.service.impl.isbn.isbndb.bean.BookData;
+import org.nucco.library.service.impl.isbn.isbndb.bean.BookList;
 import org.nucco.library.service.impl.isbn.isbndb.bean.ISBNdb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Named
 @Singleton
-@Named("isbndb")
 public class ISBNdbService implements ISBNService {
 
 	@Override
-	public Book getBook(String isbn) {
-		Book book = null;
+	public String getName() {
+		return "isbndb";
+	}
+
+	@Override
+	public BookDTO getBook(String isbn) {
+		BookDTO book = null;
 
 		try {
 			URL url = new URL(BOOKS_API_URL + ACCESS_KEY + ADD_TEXTS + ADD_DETAILS + ADD_AUTHORS + BY_ISBN + isbn);
@@ -32,11 +38,13 @@ public class ISBNdbService implements ISBNService {
 			StreamSource xml = new StreamSource(url.openStream());
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			ISBNdb value = unmarshaller.unmarshal(xml, ISBNdb.class).getValue();
-			BookData bookData = value.getBookList().getBooks().get(0);
-
-			book = new Book();
-			book.setTitle(bookData.getTitle());
-//			book.setAuthor(bookData.getAuthorsText());
+			BookList bookList = value.getBookList();
+			if (bookList.getTotalResults() > 0) {
+				BookData bookData = bookList.getBooks().get(0);
+				book = new BookDTO();
+				book.setTitle(bookData.getTitle());
+	//			book.setAuthor(bookData.getAuthorsText());
+			}
 
 		} catch (JAXBException e) {
 			LOG.error(e.getMessage(), e);
