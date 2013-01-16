@@ -1,10 +1,22 @@
 Ext.define('Library.form.Book', {
 	extend: 'Ext.form.Panel',
 	xtype: 'bookform',
+	layout: 'anchor',
+	bodyPadding: 5,
+	defaults: {
+		anchor: '100%'
+	},
+	fieldDefaults: {
+		labelAlign: 'top'
+	},
 	items: [{
 		xtype: 'numberfield',
 		name: 'id',
 		hidden: true
+	},{
+		xtype: 'isbnfield',
+		name: 'isbn',
+		fieldLabel: 'ISBN'
 	},{
 		xtype: 'textfield',
 		name: 'title',

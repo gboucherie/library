@@ -4,6 +4,9 @@ Ext.define('Library.utils', {
 		security: {
 			login: 'rest/auth/login',
 			current_user: 'rest/auth/current_user',
+		},
+		books: {
+			isbn: 'rest/books/isbn'
 		}
 	},
 	security: {

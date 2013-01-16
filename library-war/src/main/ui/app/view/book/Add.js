@@ -3,9 +3,16 @@ Ext.define('Library.view.book.Add', {
 	alias: 'widget.bookadd',
 	title: 'Ajouter un livre',
 	autoShow: false,
+	autoScroll: true,
 	modal: true,
+	width: 300,
+	height: 300,
+	layout: {
+		type: 'anchor'
+	},
 	items: [{
-		xtype: 'bookform'
+		xtype: 'bookform',
+		anchor: '100% 100%'
 	}],
 	buttons: [{
 		text: 'Ajouter',

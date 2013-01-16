@@ -1,4 +1,5 @@
 Ext.require('Library.utils');
+Ext.require('Library.form.field.Isbn');
 Ext.require('Library.form.Book');
 Ext.require('Library.form.Login');
 Ext.application({
