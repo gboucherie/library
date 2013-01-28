@@ -1,5 +1,6 @@
 package org.nucco.library.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -18,10 +20,15 @@ import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.eclipse.persistence.annotations.BatchFetch;
+import org.eclipse.persistence.annotations.BatchFetchType;
+import org.eclipse.persistence.annotations.JoinFetch;
+import org.eclipse.persistence.annotations.JoinFetchType;
+
 @Entity
 @Table(name = "USERS")
 @XmlRootElement
-public class User {
+public class User implements Serializable {
 
 	@Id
 	@Column(nullable = false, unique = true, length = 128)
@@ -75,12 +82,13 @@ public class User {
 		this.registeredOn = registeredOn;
 	}
 
-	@ElementCollection(targetClass = Group.class)
+	@ElementCollection(targetClass = Group.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "USERS_GROUPS",
 					joinColumns = @JoinColumn(name = "email", nullable = false),
 					uniqueConstraints = {@UniqueConstraint(columnNames = {"email", "groupname"})})
 	@Enumerated(EnumType.STRING)
 	@Column(name = "groupname", nullable = false, length = 64)
+	@JoinFetch(JoinFetchType.INNER)
 	public List<Group> getGroups() {
 		return groups;
 	}
@@ -112,5 +120,7 @@ public class User {
 	private List<Group> groups;
 
 	private Boolean activated;
+
+	private static final long serialVersionUID = 1L;
 
 }

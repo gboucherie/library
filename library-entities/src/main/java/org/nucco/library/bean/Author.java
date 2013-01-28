@@ -1,5 +1,7 @@
 package org.nucco.library.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"firstname", "lastname"})})
-public class Author {
+public class Author implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,5 +47,7 @@ public class Author {
 	private Long id;
 	private String firstname;
 	private String lastname;
+
+	private static final long serialVersionUID = 1L;
 
 }

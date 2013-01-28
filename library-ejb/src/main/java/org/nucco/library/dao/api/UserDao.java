@@ -1,7 +1,10 @@
 package org.nucco.library.dao.api;
 
+import javax.ejb.Remote;
+
 import org.nucco.library.bean.User;
 
+@Remote
 public interface UserDao {
 
 	/**

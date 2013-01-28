@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -129,12 +130,12 @@ public class BookResource {
 		return response;
 	}
 
-	@Inject
+	@EJB
 	public void setBookDao(BookDao bookDao) {
 		this.bookDao = bookDao;
 	}
 
-	@Inject
+	@EJB
 	public void setAuthorDao(AuthorDao authorDao) {
 		this.authorDao = authorDao;
 	}

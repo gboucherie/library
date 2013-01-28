@@ -12,6 +12,13 @@
 		<dependency>
 			<groupId>org.nucco.library</groupId>
 			<artifactId>library-entities</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.nucco.library</groupId>
+			<artifactId>library-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

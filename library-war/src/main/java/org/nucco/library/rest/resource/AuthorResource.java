@@ -3,7 +3,7 @@ package org.nucco.library.rest.resource;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -37,7 +37,7 @@ public class AuthorResource {
 		return response;
 	}
 
-	@Inject
+	@EJB
 	public void setAuthorDao(AuthorDao authorDao) {
 		this.authorDao = authorDao;
 	}

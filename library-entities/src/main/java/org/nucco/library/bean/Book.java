@@ -1,5 +1,7 @@
 package org.nucco.library.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Book {
+public class Book implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,5 +63,7 @@ public class Book {
 	private Author author;
 	private String genre;
 	private Integer year;
+
+	private static final long serialVersionUID = 1L;
 
 }

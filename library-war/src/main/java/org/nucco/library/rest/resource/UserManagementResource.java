@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
@@ -105,7 +105,7 @@ public class UserManagementResource {
 		return null;
 	}
 
-	@Inject
+	@EJB
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}

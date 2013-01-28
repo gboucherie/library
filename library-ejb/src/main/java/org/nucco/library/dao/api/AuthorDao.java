@@ -2,8 +2,11 @@ package org.nucco.library.dao.api;
 
 import java.util.List;
 
+import javax.ejb.Remote;
+
 import org.nucco.library.bean.Author;
 
+@Remote
 public interface AuthorDao {
 
 	/**

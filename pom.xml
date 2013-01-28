@@ -21,6 +21,7 @@
 		<module>library-war</module>
 		<module>library-ear</module>
 		<module>library-entities</module>
+		<module>library-ejb</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -28,6 +29,12 @@
 				<groupId>org.nucco.library</groupId>
 				<artifactId>library-entities</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.nucco.library</groupId>
+				<artifactId>library-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
 			</dependency>
 			<dependency>
 				<groupId>org.nucco.library</groupId>
