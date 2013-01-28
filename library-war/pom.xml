@@ -16,7 +16,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nucco.library</groupId>
-			<artifactId>library-ejb</artifactId>
+			<artifactId>library-dao</artifactId>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>

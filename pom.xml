@@ -21,7 +21,7 @@
 		<module>library-war</module>
 		<module>library-ear</module>
 		<module>library-entities</module>
-		<module>library-ejb</module>
+		<module>library-dao</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -32,7 +32,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.nucco.library</groupId>
-				<artifactId>library-ejb</artifactId>
+				<artifactId>library-dao</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
