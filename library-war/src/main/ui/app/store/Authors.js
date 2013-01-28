@@ -4,7 +4,7 @@ Ext.define('Library.store.Authors', {
 	autoLoad: false,
 	proxy: {
 		type: 'rest',
-		url: 'rest/authors',
+		url: '/library-rest/authors',
 		reader: {
 			type: 'json',
 			root: 'author',

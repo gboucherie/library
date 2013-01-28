@@ -7,7 +7,7 @@ Ext.define('Library.store.Books', {
 	leadingBufferZone: 300,
 	proxy: {
 		type: 'rest',
-		url: 'rest/books',
+		url: '/library-rest/books',
 		reader: {
 			type: 'json',
 			root: 'book',

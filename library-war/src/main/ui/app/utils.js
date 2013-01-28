@@ -2,11 +2,11 @@ Ext.define('Library.utils', {
 	singleton: true,
 	rest: {
 		security: {
-			login: 'rest/auth/login',
-			current_user: 'rest/auth/current_user',
+			login: '/library-rest/auth/login',
+			current_user: '/library-rest/auth/current_user',
 		},
 		books: {
-			isbn: 'rest/books/isbn'
+			isbn: '/library-rest/books/isbn'
 		}
 	},
 	security: {

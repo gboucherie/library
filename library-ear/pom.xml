@@ -20,6 +20,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nucco.library</groupId>
+			<artifactId>library-rest</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.nucco.library</groupId>
 			<artifactId>library-war</artifactId>
 			<type>war</type>
 		</dependency>
@@ -35,8 +40,13 @@
 					<modules>
 						<webModule>
 							<groupId>org.nucco.library</groupId>
+							<artifactId>library-rest</artifactId>
+							<contextRoot>library-rest</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>org.nucco.library</groupId>
 							<artifactId>library-war</artifactId>
-							<contextRoot>library</contextRoot>
+							<contextRoot>library-war</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
