@@ -5,9 +5,9 @@
 		<artifactId>library</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>library-war</artifactId>
+	<artifactId>library-ui</artifactId>
 	<packaging>war</packaging>
-	<name>library-war</name>
+	<name>library-ui</name>
 	<build>
 		<plugins>
 			<plugin>

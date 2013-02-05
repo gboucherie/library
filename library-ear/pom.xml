@@ -25,7 +25,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.nucco.library</groupId>
-			<artifactId>library-war</artifactId>
+			<artifactId>library-ui</artifactId>
 			<type>war</type>
 		</dependency>
 	</dependencies>
@@ -45,8 +45,8 @@
 						</webModule>
 						<webModule>
 							<groupId>org.nucco.library</groupId>
-							<artifactId>library-war</artifactId>
-							<contextRoot>library-war</contextRoot>
+							<artifactId>library-ui</artifactId>
+							<contextRoot>library-ui</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
