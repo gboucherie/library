@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<configuration>
+		<custom-converters>
+			<converter type="org.nucco.library.service.impl.dozer.converters.AuthorConverter">
+				<class-a>org.nucco.library.bean.Author</class-a>
+				<class-b>java.lang.String</class-b>
+			</converter>
+		</custom-converters>
+	</configuration>
+
+	<mapping>
+		<class-a>org.nucco.library.bean.Book</class-a>
+		<class-b>org.nucco.library.rest.bean.BookDTO</class-b>
+	</mapping>
+</mappings>
